@@ -8,5 +8,7 @@
  * 6 import app firebase init.js into yur app.js
  * 7. import getAuth from firebase/auth and create auth = getAuth(app)
  * 8 turn on google authentication and some further steps there(firebase> auth> google sign in)
- * 9.ui pop up show with auth and provider
+ * 9.ui pop up show with auth and provider(create google provider)
+ * 10. use sign in with pop up and pass auth and provider
+ * 11. handle them and catch error
  * */ 

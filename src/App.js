@@ -1,15 +1,27 @@
 // remove logo 
 import './App.css';
 import app from './firebase.init';
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { useState } from 'react';
 const auth = getAuth(app);
 
 function App() {
   const [user, setUser] = useState({})
-  const provider = new GoogleAuthProvider();
+  const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
   const handleGoogleSignIn = () => {
-  signInWithPopup(auth, provider)
+  signInWithPopup(auth, googleProvider)
+  .then(result => {
+    const user = result.user;
+    setUser(user);
+    console.log(user);
+  })
+  .catch(error => {
+    console.log('error', error)
+  })  
+  }
+  const handleGithubSignIn = () => {
+  signInWithPopup(auth, githubProvider)
   .then(result => {
     const user = result.user;
     setUser(user);
@@ -33,14 +45,17 @@ function App() {
     <div className="App">
       {/* {condition ? true: false} */}
       {
-        user.email ? <button onClick={handleGoogleSignOut}>google sign out</button> :       
-        <button onClick={handleGoogleSignIn}>google sign in</button>
+        user.uid ? <button onClick={handleGoogleSignOut}>google sign out</button> :       
+        <>
+          <button onClick={handleGoogleSignIn}>google sign in</button>
+          <button onClick={handleGithubSignIn}>github sign in</button>
+        </>
 
       }
       
       <h2>name:{user.displayName}</h2>
-      <p>hey i know your email also: {user.email}</p>
-      <h4>see here is your photo:<img src={user.photoURL} alt="" />
+      <p>your email also: {user.email}</p>
+      <h4> photo:<img src={user.photoURL} alt="" />
 </h4>
       
     </div>

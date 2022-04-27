@@ -4,20 +4,25 @@ import './App.css';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>component er vitorer jinish di falaiya de lai te</h1>
+      <ul>
+        <li>
+          <tomake-1>matha muta</tomake-1>
+        </li>
+        <li>
+          <tomake-2>gola muta</tomake-2>
+        </li>
+        <li>
+          <tomake-3>nak muta</tomake-3>
+        </li>
+        <li>
+          <tomake-4>gola chipa</tomake-4>
+        </li>
+        <li>
+          <tomake-5>vuri mota</tomake-5>
+        </li>
+      </ul>
+      
     </div>
   );
 }
